@@ -1,8 +1,8 @@
 # Created by: Daniel Gerzo <danger@FreeBSD.org>
-# $FreeBSD: head/www/uwsgi/Makefile 381481 2015-03-17 11:00:14Z demon $
+# $FreeBSD: head/www/uwsgi/Makefile 391052 2015-07-01 12:12:08Z demon $
 
 PORTNAME=	uwsgi
-PORTVERSION=	2.0.10
+PORTVERSION=	2.0.11
 CATEGORIES=	www python
 MASTER_SITES=	http://projects.unbit.it/downloads/
 
@@ -42,6 +42,5 @@ do-install:
 	${MKDIR} -p ${STAGEDIR}${PREFIX}/share/uwsgi
 	${INSTALL_PROGRAM} ${WRKSRC}/python34_plugin.so ${STAGEDIR}${PREFIX}/share/uwsgi/
 	${INSTALL_PROGRAM} ${WRKSRC}/python27_plugin.so ${STAGEDIR}${PREFIX}/share/uwsgi/
-
 
 .include <bsd.port.mk>
