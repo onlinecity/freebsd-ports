@@ -1,0 +1,4 @@
+include/normApi.h
+lib/libnorm.so
+lib/libnorm.so.1
+lib/libnorm.so.1.0.0
