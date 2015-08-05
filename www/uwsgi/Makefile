@@ -2,7 +2,7 @@
 # $FreeBSD: head/www/uwsgi/Makefile 391052 2015-07-01 12:12:08Z demon $
 
 PORTNAME=	uwsgi
-PORTVERSION=	2.0.11
+PORTVERSION=	2.0.11.1
 CATEGORIES=	www python
 MASTER_SITES=	http://projects.unbit.it/downloads/
 
