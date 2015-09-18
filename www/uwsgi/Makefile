@@ -15,8 +15,8 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 USES=		python:2.7
 USE_RC_SUBR=	uwsgi
 
-# Also depend on Python 3.4
-BUILD_DEPENDS+= python3.4:${PORTSDIR}/lang/python34
+# Also depend on Python 3.5
+BUILD_DEPENDS+= python3.5:${PORTSDIR}/lang/python35
 
 # Don't build Python 2.7 into binary
 MAKE_ENV= PROFILE="nolang"
@@ -33,14 +33,16 @@ post-patch:
 
 pre-install:
 	cd ${WRKSRC} && PYTHON=python2.7 ./uwsgi --build-plugin "plugins/python python27"
-	cd ${WRKSRC} && PYTHON=python3.4 ./uwsgi --build-plugin "plugins/python python34"
+	cd ${WRKSRC} && PYTHON=python3.5 ./uwsgi --build-plugin "plugins/python python35"
+	cd ${WRKSRC} && ./uwsgi --build-plugin "plugins/pypy"
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/${PORTNAME} ${STAGEDIR}${PREFIX}/bin/
 	${MKDIR} ${STAGEDIR}${PYTHONPREFIX_SITELIBDIR}
 	${INSTALL_DATA} ${WRKSRC}/uwsgidecorators.py ${STAGEDIR}${PYTHONPREFIX_SITELIBDIR}
 	${MKDIR} -p ${STAGEDIR}${PREFIX}/share/uwsgi
-	${INSTALL_PROGRAM} ${WRKSRC}/python34_plugin.so ${STAGEDIR}${PREFIX}/share/uwsgi/
+	${INSTALL_PROGRAM} ${WRKSRC}/python35_plugin.so ${STAGEDIR}${PREFIX}/share/uwsgi/
 	${INSTALL_PROGRAM} ${WRKSRC}/python27_plugin.so ${STAGEDIR}${PREFIX}/share/uwsgi/
+	${INSTALL_PROGRAM} ${WRKSRC}/pypy_plugin.so ${STAGEDIR}${PREFIX}/share/uwsgi/
 
 .include <bsd.port.mk>
