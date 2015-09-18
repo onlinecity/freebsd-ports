@@ -1,7 +1,7 @@
 # $FreeBSD: head/net/libzmq4/Makefile 389682 2015-06-15 11:06:49Z koobs $
 
 PORTNAME=	libzmq4
-PORTVERSION=	4.1.2
+PORTVERSION=	4.1.3
 CATEGORIES=	net
 MASTER_SITES=	http://download.zeromq.org/
 DISTNAME=	zeromq-${DISTVERSION}

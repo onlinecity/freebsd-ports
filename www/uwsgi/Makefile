@@ -18,6 +18,9 @@ USE_RC_SUBR=	uwsgi
 # Also depend on Python 3.5
 BUILD_DEPENDS+= python3.5:${PORTSDIR}/lang/python35
 
+# Also depend on PyPy
+BUILD_DEPENDS+= pypy:${PORTSDIR}/lang/pypy
+
 # Don't build Python 2.7 into binary
 MAKE_ENV= PROFILE="nolang"
 
@@ -25,7 +28,7 @@ LDFLAGS+=	"-L${LOCALBASE}/lib"
 
 PLIST_FILES=	bin/uwsgi \
 		%%PYTHON_SITELIBDIR%%/uwsgidecorators.py \
-		share/uwsgi/python34_plugin.so \
+		share/uwsgi/python35_plugin.so \
 		share/uwsgi/python27_plugin.so 
 
 post-patch:
@@ -34,7 +37,7 @@ post-patch:
 pre-install:
 	cd ${WRKSRC} && PYTHON=python2.7 ./uwsgi --build-plugin "plugins/python python27"
 	cd ${WRKSRC} && PYTHON=python3.5 ./uwsgi --build-plugin "plugins/python python35"
-	cd ${WRKSRC} && ./uwsgi --build-plugin "plugins/pypy"
+	cd ${WRKSRC} && PYTHON=python2.7 ./uwsgi --build-plugin "plugins/pypy"
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/${PORTNAME} ${STAGEDIR}${PREFIX}/bin/
