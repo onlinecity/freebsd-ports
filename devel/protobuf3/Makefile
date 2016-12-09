@@ -1,5 +1,5 @@
 PORTNAME=	protobuf
-PORTVERSION=	3.0.0b3
+PORTVERSION=	3.1.0
 DISTVERSIONPREFIX=	v
 CATEGORIES=	devel
 
@@ -18,7 +18,7 @@ USE_LDCONFIG=	yes
 USES=		autoreconf gmake libtool pathfix pkgconfig
 
 GH_ACCOUNT=	google
-GH_TAGNAME=	v3.0.0-beta-3
+GH_TAGNAME=	v3.1.0
 USE_GITHUB=	yes
 
 .include <bsd.port.mk>
