@@ -1,37 +1,35 @@
 # Created by: Cheng-Lung Sung <clsung@FreeBSD.org>
-# $FreeBSD: head/devel/glog/Makefile 382151 2015-03-24 18:24:27Z sunpoet $
+# $FreeBSD: head/devel/glog/Makefile 412346 2016-04-01 14:00:51Z mat $
 
 PORTNAME=	glog
 PORTVERSION=	0.3.4
+PORTREVISION= 1
+DISTVERSIONPREFIX=	v
 CATEGORIES=	devel
 
 MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Library of C++ classes for flexible logging
 
 LICENSE=	BSD3CLAUSE
+LICENSE_FILE=	${WRKSRC}/COPYING
 
-LIB_DEPENDS=	libgflags.so:${PORTSDIR}/devel/gflags
+LIB_DEPENDS=	libgflags.so:devel/gflags
 
 OPTIONS_DEFINE=	DOCS
 
-CPPFLAGS+=	-I${LOCALBASE}/include
 GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
-LDFLAGS+=	-L${LOCALBASE}/lib -lexecinfo
+LDFLAGS+=	-lexecinfo
+TEST_TARGET=	check
 USE_LDCONFIG=	yes
-USES=		execinfo libtool pathfix
+USES=		execinfo libtool localbase pathfix
 
 PORTDOCS=	*
 
 GH_ACCOUNT=	google
-GH_PROJECT=	${PORTNAME}
-GH_TAGNAME=	v${PORTVERSION}
 USE_GITHUB=	yes
 
 post-patch:
 	@${REINPLACE_CMD} -e '/^docdir = / s| = .*| = ${DOCSDIR}|' ${WRKSRC}/Makefile.in
-
-regression-test test: build
-	cd ${WRKSRC}/ && ${SETENV} ${MAKE_ENV} ${MAKE_CMD} check
 
 .include <bsd.port.mk>
