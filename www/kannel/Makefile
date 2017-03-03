@@ -3,7 +3,7 @@
 
 PORTNAME=	kannel
 PORTVERSION=	1.4.4
-PORTREVISION=	3
+PORTREVISION=	4
 PORTEPOCH=	1
 CATEGORIES=	www
 USE_GITHUB= yes
@@ -39,7 +39,7 @@ CONFIGURE_ARGS=	--with-cflags="${CPPFLAGS}" --with-libs="${LDFLAGS}" \
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib -pthread
 
-OPTIONS_DEFINE=	MYSQL PGSQL SQLITE3
+OPTIONS_DEFINE=	MYSQL PGSQL SQLITE3 REDIS
 OPTIONS_DEFAULT=	MYSQL
 
 SQLITE3_USES=	sqlite:3
@@ -50,6 +50,9 @@ MYSQL_CONFIGURE_WITH=	mysql
 
 PGSQL_USES=	pgsql
 PGSQL_CONFIGURE_WITH=	pgsql
+
+REDIS_LIB_DEPENDS=  libhiredis.so:databases/hiredis
+REDIS_CONFIGURE_WITH=	redis
 
 post-install:
 .for filename in wapkannel.conf smskannel.conf
