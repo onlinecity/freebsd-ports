@@ -2,9 +2,8 @@
 # $FreeBSD: head/devel/gflags/Makefile 427882 2016-12-05 13:39:19Z sunpoet $
 
 PORTNAME=	gflags
-PORTVERSION=	2.2.0
+PORTVERSION=	2.2.1
 DISTVERSIONPREFIX=	v
-PORTREVISION=	3
 CATEGORIES=	devel
 
 MAINTAINER=	sunpoet@FreeBSD.org
