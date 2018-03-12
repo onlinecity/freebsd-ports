@@ -21,7 +21,8 @@ INSTALL_TARGET=	install-strip
 LDFLAGS+=	-lexecinfo
 TEST_TARGET=	check
 USE_LDCONFIG=	yes
-USES=		execinfo libtool localbase pathfix
+USES=		libtool localbase pathfix
+#USES=		execinfo libtool localbase pathfix
 
 PORTDOCS=	*
 
