@@ -3,6 +3,7 @@
 
 PORTNAME=	glog
 PORTVERSION=	0.3.5
+PORTREVISION= 1
 DISTVERSIONPREFIX=	v
 CATEGORIES=	devel
 
@@ -21,7 +22,7 @@ INSTALL_TARGET=	install-strip
 LDFLAGS+=	-lexecinfo
 TEST_TARGET=	check
 USE_LDCONFIG=	yes
-USES=		execinfo libtool localbase pathfix
+USES=		libtool localbase pathfix
 
 PORTDOCS=	*
 
